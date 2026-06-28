@@ -3,13 +3,13 @@ I will be installing Docker on Debian. For other distribution or OS there is som
 > https://docs.docker.com/engine/install/
 
 It is done in 3 steps
-1. Uninstall all conflicting packages:
+#### 1. Uninstall all conflicting packages:
 
 ```
 sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-doc podman-docker containerd runc | cut -f1)
 ```
 
-2. Set up Docker's apt repository:
+#### 2. Set up Docker's apt repository:
 
 ```
 # Add Docker's official GPG key:
@@ -32,13 +32,13 @@ EOF
 sudo apt update
 ```
 
-3. Install the Docker packages"
+#### 3. Install the Docker packages"
 
 ```
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-4. Verify Installation
+#### 4. Verify Installation
 ```
 sudo systemctl status docker
 
