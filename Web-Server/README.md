@@ -11,3 +11,8 @@ Both can be installed directly onto the system. But for ease of use, I am going 
 1. Install Docker and Docker Compose
 2. Create a docker.yml file
 3. Run the machines
+
+# Reference
+- https://docs.docker.com/engine/install/debian/
+- https://hub.docker.com/r/bkimminich/juice-shop
+- https://hub.docker.com/_/nginx
