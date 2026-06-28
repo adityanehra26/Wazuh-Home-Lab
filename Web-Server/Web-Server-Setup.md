@@ -26,6 +26,7 @@ mkdir /opt/web-server-lab/logs
 ```
 nano /opt/web-server-lab/docker-compose.yml
 ```
+Add the following content in the docker-componse.yml file.
 ```
 version: "3.9"
 
@@ -65,6 +66,7 @@ networks:
 ```
 nano /opt/web-server-lab/nginx/default.conf
 ```
+Paste the following data in default.conf file.
 ```
 server {
 
