@@ -3,6 +3,12 @@ I will be installing Docker on Debian. For other distribution or OS there is som
 > https://docs.docker.com/engine/install/
 
 It is done in 3 steps
+1. Uninstall all conflicting packages
+2. Set up Docker's apt repository
+3. Installation of Docker packages
+4. Verify Installation
+
+## Installation Steps
 #### 1. Uninstall all conflicting packages:
 
 ```
@@ -32,7 +38,7 @@ EOF
 sudo apt update
 ```
 
-#### 3. Install the Docker packages"
+#### 3. Installation of Docker packages:
 
 ```
 sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
