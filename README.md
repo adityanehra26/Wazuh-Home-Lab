@@ -7,4 +7,10 @@ The Lab consist of the following systems
 3. Windows Machine: It will be a Windows-based endpoint for monitoring.
 4. Kali Linux: It will act as an attacker.
 
+# Roadmap 
+1. Install Wazuh-Server
+2. Install Web-Server
+4. Install Kali (Attacker Machine)
+5. Install Windows
+6. Install Wazuh Agent to endpoints & servers
 #Architecture
