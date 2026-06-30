@@ -1,26 +1,82 @@
 # Wazuh Server
 
+This directory covers the deployment and initial configuration of the Wazuh Server used in this home lab.
+
+The objective is to build a centralized Security Information and Event Management (SIEM) platform capable of collecting logs, monitoring endpoints, detecting threats, and supporting incident response activities.
+
+For simplicity, all Wazuh components are deployed on a single Ubuntu Server.
+
+---
+
 ## Wazuh Architecture
-The Wazuh has 3 central components
-1. Wazuh Server
-2. Wazuh Indexer
-3. Wazuh Dashboard
 
-![Alt text](Images/wazuh-components.png)
+A standard Wazuh deployment consists of three core components:
 
-As installing them separately requires a lot of resources. We will install these components in a single machine.
+- **Wazuh Server** – Receives and analyzes security events from Wazuh agents.
+- **Wazuh Indexer** – Stores and indexes security events for fast searching and analytics.
+- **Wazuh Dashboard** – Provides a web interface for monitoring, visualization, and management.
+
+![Wazuh Components](Images/wazuh-components.png)
+
+> **Note**
+>
+> To reduce hardware requirements, this lab deploys all three components on a single Ubuntu Server.
+
+---
+
+## Lab Environment
+
+| Component | Value |
+|-----------|-------|
+| Operating System | Ubuntu Server |
+| Wazuh Version | 4.14 |
+| Deployment Type | Single Node |
+| Components Installed | Wazuh Server, Wazuh Indexer, Wazuh Dashboard |
+
+---
+
+## Prerequisites
+
+Before installation, ensure the following requirements are met:
+
+- Ubuntu Server installed
+- Root or sudo privileges
+- Internet connectivity
+- Minimum 4 GB RAM (8 GB recommended)
+- Static IP address (recommended)
+
+---
 
 ## Installation
-Here is the one-line code to install Wazuh.
 
+Download and execute the official Wazuh installation script.
 
-```curl -sO https://packages.wazuh.com/4.14/wazuh-install.sh && sudo bash ./wazuh-install.sh -a```
-
-
-If it is not working, it is due to the version number. You can refer to Wazuh Documentation, which I will provide below.
-
-After installation is done, the default credentials will be provided along with the web interface URL.
+```bash
+curl -sO https://packages.wazuh.com/4.14/wazuh-install.sh
+sudo bash ./wazuh-install.sh -a
 ```
+
+The `-a` option installs:
+
+- Wazuh Server
+- Wazuh Indexer
+- Wazuh Dashboard
+
+on the same machine.
+
+> **Note**
+>
+> If the installation script is unavailable, verify that the version number matches the latest Wazuh release. Refer to the official documentation for the latest installation instructions.
+
+---
+
+## Initial Login
+
+After installation completes successfully, the installer displays the Dashboard URL and administrator credentials.
+
+Example:
+
+```text
 INFO: --- Summary ---
 INFO: You can access the web interface https://<WAZUH_DASHBOARD_IP_ADDRESS>
     User: admin
@@ -28,12 +84,50 @@ INFO: You can access the web interface https://<WAZUH_DASHBOARD_IP_ADDRESS>
 INFO: Installation finished.
 ```
 
-## Use Case
-| **Endpoint security** | **Threat intelligence** | **Security operations** | **Cloud security** |
-| --- | --- | --- | --- |
-| Configuration assessment | Threat hunting | Incident response | Container security |
-| Malware detection | Log data analysis | Regulatory compliance | Posture management |
-| File integrity monitoring | Vulnerability detection | IT hygiene | Workload protection |
+Login to the Wazuh Dashboard using the provided credentials.
 
-# Reference
-- https://documentation.wazuh.com/current/quickstart.html
+---
+
+## Verify Installation
+
+Verify that all Wazuh services are running.
+
+```bash
+sudo systemctl status wazuh-manager
+sudo systemctl status wazuh-indexer
+sudo systemctl status wazuh-dashboard
+```
+
+Or verify all Wazuh services at once:
+
+```bash
+sudo systemctl status wazuh-*
+```
+
+---
+
+## Wazuh Use Cases
+
+| Endpoint Security | Threat Intelligence | Security Operations | Cloud Security |
+|-------------------|---------------------|---------------------|----------------|
+| Configuration Assessment | Threat Hunting | Incident Response | Container Security |
+| Malware Detection | Log Data Analysis | Regulatory Compliance | Posture Management |
+| File Integrity Monitoring | Vulnerability Detection | IT Hygiene | Workload Protection |
+
+---
+
+## Next Step
+
+Continue to the **Web Server** setup guide to:
+
+- Deploy the web server
+- Install the Wazuh Agent
+- Register the endpoint with the Wazuh Server
+- Start collecting security logs
+
+---
+
+## References
+
+- Official Wazuh Quick Start Guide: https://documentation.wazuh.com/current/quickstart.html
+- Official Wazuh Documentation: https://documentation.wazuh.com/current/index.html
