@@ -116,44 +116,36 @@ sudo systemctl restart wazuh-agent
 
 ---
 
-## Verify Log Collection
+## Important Note
 
-Generate some web traffic by opening the Juice Shop application in a browser.
+After configuring the Wazuh Agent to monitor the NGINX access and error logs, you may notice that no events appear in the Wazuh Dashboard.
 
-Then verify that the events are received in the Wazuh Dashboard.
+This is expected behavior.
 
-Navigate to:
+By default, Wazuh assigns most standard web access log events a **rule level of 0**. Events with rule level **0** are discarded during the indexing pipeline and are **not stored or displayed** in the Wazuh Dashboard.
 
-```
-Dashboard
-    → Discover
-```
+To visualize these logs, one of the following approaches is required:
 
-or
+- Create a custom Wazuh rule that assigns a higher rule level.
+- Modify the existing rule level.
+- Configure a custom ingestion pipeline that indexes level 0 events (not recommended for production environments).
 
-```
-Dashboard
-    → Security Events
-```
-
-Search for the agent name:
-
-```
-Juice-Shop-Web-Server
-```
-
-You should begin seeing NGINX access and error log events.
+These configurations will be covered in a later section of this home lab.
 
 ---
 
 ## Next Step
 
-The web server is now sending:
+The Wazuh Agent is now configured to monitor:
 
 - Linux system logs
 - NGINX access logs
 - NGINX error logs
 
-to the Wazuh Server.
+The next phase of the lab focuses on:
 
-The next phase of the lab is to create detection rules, dashboards, and alerts for web attacks against OWASP Juice Shop.
+- Understanding the Wazuh ruleset
+- Creating custom detection rules
+- Increasing the rule level for NGINX events
+- Verifying that web server logs are indexed and searchable
+- Building detections for common web attacks against OWASP Juice Shop
