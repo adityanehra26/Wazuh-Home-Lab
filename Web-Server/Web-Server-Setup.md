@@ -10,7 +10,7 @@ The server will be set up in the following structure:
     └── error.log
 ```
 
-Here, the nginx and logs directory are used for mapping files from the Nginx container.
+Here, the nginx and logs directories are used for mapping files from the Nginx container.
 
 ## Setup
 > "Run every command as Root user."
@@ -26,10 +26,8 @@ mkdir /opt/web-server-lab/logs
 ```
 nano /opt/web-server-lab/docker-compose.yml
 ```
-Add the following content in the docker-componse.yml file.
+Add the following content to the docker-compose.yml file.
 ```
-version: "3.9"
-
 services:
   juice-shop:
     image: bkimminich/juice-shop:latest
@@ -66,7 +64,7 @@ networks:
 ```
 nano /opt/web-server-lab/nginx/default.conf
 ```
-Paste the following data in default.conf file.
+Paste the following data into the default.conf file.
 ```
 server {
 
