@@ -17,31 +17,32 @@ The generated logs are collected by the Wazuh Agent and forwarded to the Wazuh S
 
 > **Note**
 >
-> Juice Shop is **not exposed directly** to the local network. All client requests pass through the NGINX reverse proxy.
+> OWASP Juice Shop is **not exposed directly** to the local network. All client requests are routed through the NGINX reverse proxy.
 
 ---
 
-## Directory Structure
+## Documentation
 
-```
-Web-Server/
-│
-├── README.md
-├── Docker-Installation.md
-└── Web-Server-Setup.md
-```
+Follow the guides below in the recommended order.
+
+| Step | Guide | Description |
+|------|-------|-------------|
+| 1 | [Docker Installation](Docker-Installation.md) | Install Docker Engine and Docker Compose on Debian. |
+| 2 | [Web Server Setup](Web-Server-Setup.md) | Deploy NGINX Proxy and OWASP Juice Shop using Docker Compose, configure NGINX log storage, and install the Wazuh Agent. |
 
 ---
 
 ## Roadmap
 
-Follow the documents in the following order:
+The deployment process follows the workflow below:
 
 1. Install Docker Engine and Docker Compose.
-2. Deploy the NGINX reverse proxy and Juice Shop using Docker Compose.
-3. Verify that the web application is accessible through NGINX.
-4. Confirm that NGINX access and error logs are generated.
-5. Install and configure the Wazuh Agent.
+2. Deploy the NGINX reverse proxy and OWASP Juice Shop.
+3. Verify container health and application accessibility.
+4. Verify NGINX access and error log generation.
+5. Install and register the Wazuh Agent.
+6. Configure the Wazuh Agent to monitor NGINX access and error logs.
+7. Generate web traffic and prepare the environment for threat detection.
 
 ---
 
@@ -49,12 +50,28 @@ Follow the documents in the following order:
 
 After completing this section, you will be able to:
 
-- Install Docker on Debian.
+- Install Docker Engine and Docker Compose on Debian.
 - Deploy multiple containers using Docker Compose.
 - Configure NGINX as a reverse proxy.
 - Isolate backend services from the local network.
-- Generate realistic web server logs.
-- Prepare the web server for centralized log collection using Wazuh.
+- Configure persistent storage for NGINX access and error logs.
+- Deploy OWASP Juice Shop as a vulnerable web application.
+- Install and configure the Wazuh Agent.
+- Configure the Wazuh Agent to monitor web server logs.
+- Prepare the web server for centralized log collection and threat detection using Wazuh.
+
+---
+
+## Lab Components
+
+| Component | Purpose |
+|-----------|---------|
+| Debian 13 | Operating System |
+| Docker Engine | Container Runtime |
+| Docker Compose | Multi-container Orchestration |
+| NGINX | Reverse Proxy |
+| OWASP Juice Shop | Vulnerable Web Application |
+| Wazuh Agent | Endpoint Monitoring & Log Collection |
 
 ---
 
@@ -64,3 +81,4 @@ After completing this section, you will be able to:
 - Docker Compose Documentation: https://docs.docker.com/compose/
 - OWASP Juice Shop Docker Image: https://hub.docker.com/r/bkimminich/juice-shop
 - NGINX Official Docker Image: https://hub.docker.com/_/nginx
+- Wazuh Agent Documentation: https://documentation.wazuh.com/current/user-manual/agents/index.html
