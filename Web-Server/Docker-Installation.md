@@ -50,6 +50,7 @@ sudo systemctl status docker
 
 #If Docker is not running. Start manually
 sudo systemctl start docker
+sudo systemctl enable docker
 
 #Test
 sudo docker run hello-world
