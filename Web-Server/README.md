@@ -13,19 +13,7 @@ The generated logs are collected by the Wazuh Agent and forwarded to the Wazuh S
 
 ## Architecture
 
-```text
-                Internet / LAN
-                       │
-                       ▼
-                 NGINX Proxy
-                 (Port 80/443)
-                       │
-          Docker Bridge Network
-                       │
-                       ▼
-              OWASP Juice Shop
-                 (Port 3000)
-```
+![Web Server Traffic Flow Architecture](Images/web-server-traffic-flow-Architecture.png)
 
 > **Note**
 >
