@@ -11,6 +11,17 @@ The generated logs are collected by the Wazuh Agent and forwarded to the Wazuh S
 
 ---
 
+## Table of Contents
+
+- [Architecture](#architecture)
+- [Documentation](#documentation)
+- [Roadmap](#roadmap)
+- [What You'll Learn](#what-youll-learn)
+- [Lab Components](#lab-components)
+- [References](#references)
+
+---
+
 ## Architecture
 
 ![Web Server Traffic Flow Architecture](Images/web-server-traffic-flow-Architecture.png)
@@ -28,7 +39,8 @@ Follow the guides below in the recommended order.
 | Step | Guide | Description |
 |------|-------|-------------|
 | 1 | [Docker Installation](Docker-Installation.md) | Install Docker Engine and Docker Compose on Debian. |
-| 2 | [Web Server Setup](Web-Server-Setup.md) | Deploy NGINX Proxy and OWASP Juice Shop using Docker Compose, configure NGINX log storage, and install the Wazuh Agent. |
+| 2 | [Web Server Setup](Web-Server-Setup.md) | Deploy the NGINX reverse proxy and OWASP Juice Shop using Docker Compose. |
+| 3 | [Wazuh Agent Installation](Wazuh-Agent-Installation.md) | Install, register, and configure the Wazuh Agent to monitor Linux, NGINX access, and NGINX error logs. |
 
 ---
 
@@ -38,11 +50,13 @@ The deployment process follows the workflow below:
 
 1. Install Docker Engine and Docker Compose.
 2. Deploy the NGINX reverse proxy and OWASP Juice Shop.
-3. Verify container health and application accessibility.
-4. Verify NGINX access and error log generation.
-5. Install and register the Wazuh Agent.
-6. Configure the Wazuh Agent to monitor NGINX access and error logs.
-7. Generate web traffic and prepare the environment for threat detection.
+3. Verify that the containers are running successfully.
+4. Verify that the web application is accessible through the NGINX reverse proxy.
+5. Verify that NGINX access and error logs are generated.
+6. Install and register the Wazuh Agent.
+7. Configure the Wazuh Agent to monitor NGINX access and error logs.
+8. Configure Wazuh rules or pipelines to process web server logs.
+9. Generate web traffic and prepare the environment for threat detection.
 
 ---
 
@@ -58,7 +72,8 @@ After completing this section, you will be able to:
 - Deploy OWASP Juice Shop as a vulnerable web application.
 - Install and configure the Wazuh Agent.
 - Configure the Wazuh Agent to monitor web server logs.
-- Prepare the web server for centralized log collection and threat detection using Wazuh.
+- Understand how web server logs are ingested into Wazuh.
+- Prepare the web server for centralized log collection and threat detection.
 
 ---
 
